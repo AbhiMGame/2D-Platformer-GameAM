@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float force;
     public bool IsPlayerGrounded;
+    public GameObject playerposition;
 
 
     // Update is called once per frame
@@ -23,8 +24,7 @@ public class PlayerController : MonoBehaviour
         {
             JumpPlayer(vertical);
         }
-       
-
+        PlayerDeath();
     }
 
     private void MoveCharachtar(float horizontal)
@@ -86,6 +86,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-  
+
+     void PlayerDeath()
+    {
+        if(playerposition.transform.position.y<-12)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
 }

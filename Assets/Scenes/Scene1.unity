@@ -1024,6 +1024,7 @@ MonoBehaviour:
   speed: 4
   force: 10
   IsPlayerGrounded: 1
+  playerposition: {fileID: 1267547829}
 --- !u!4 &1267547832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4468662929139969539, guid: 7b97d4d70c3b6824fa9a29679747899f,
