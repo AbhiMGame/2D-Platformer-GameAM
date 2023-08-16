@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public bool IsPlayerGrounded;
     public GameObject playerposition;
     public ScoreController scoreController;
+    public Animation animdeath;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +27,13 @@ public class PlayerController : MonoBehaviour
             JumpPlayer(vertical);
         }
         PlayerDeath();
+    }
+
+    public void Killplayer()
+    {
+        Debug.Log("Player Killed");
+        animdeath.Play();
+        //Destroy(gameObject);
     }
 
     private void MoveCharachtar(float horizontal)
