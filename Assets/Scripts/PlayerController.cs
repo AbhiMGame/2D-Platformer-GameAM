@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float force;
     public bool IsPlayerGrounded;
     public GameObject playerposition;
-
+    public ScoreController scoreController;
 
     // Update is called once per frame
     void Update()
@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
+    public void pickupkey()
+    {
+        Debug.Log("Key has been picked up"); 
+        scoreController.IncreaseScore(10);
+    }
 
     private void PlayMovementAnimation(float horizontal)
     {
@@ -89,11 +94,13 @@ public class PlayerController : MonoBehaviour
 
      void PlayerDeath()
     {
-        if(playerposition.transform.position.y<-12)
+        if(playerposition.transform.position.y<-36)
         {
             Destroy(gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
+    
 
 }
