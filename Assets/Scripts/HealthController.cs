@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     public float currenthealth { get; private set; }
     private Animator anim;
     private bool dead;
-    private float scenloaddelay=8f;
+    private float scenloaddelay=10f;
 
     private void Awake()
     {
@@ -43,8 +43,7 @@ public class HealthController : MonoBehaviour
                 anim.SetTrigger("die");
                 GetComponent<PlayerController>().enabled = false;
                 dead = true;
-                
-                
+        
                 
             }
         }
