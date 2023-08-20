@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public bool IsPlayerGrounded;
     public GameObject playerposition;
     public ScoreController scoreController;
-    public Animation animdeath;
+   
 
-    // Update is called once per frame
+ 
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -27,13 +27,6 @@ public class PlayerController : MonoBehaviour
             JumpPlayer(vertical);
         }
         PlayerDeath();
-    }
-
-    public void Killplayer()
-    {
-        Debug.Log("Player Killed");
-        animdeath.Play();
-        //Destroy(gameObject);
     }
 
     private void MoveCharachtar(float horizontal)
@@ -74,12 +67,7 @@ public class PlayerController : MonoBehaviour
         bool crouch = Input.GetKey(KeyCode.LeftControl);
         animator.SetBool("Crouch", crouch);
 
-        //float jump = Input.GetAxisRaw("Vertical");
-        //animator.SetFloat("Jump", jump);
 
-
-        //bool jump = Input.GetKey(KeyCode.Space);
-        //animator.SetBool("JumpTriggered", jump);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -98,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
     }
 
 
