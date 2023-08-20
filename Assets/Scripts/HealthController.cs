@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class HealthController : MonoBehaviour
     public float currenthealth { get; private set; }
     private Animator anim;
     private bool dead;
-    private float scenloaddelay=10f;
+    private float scenloaddelay=20f;
+    [SerializeField]private Button buttonrestart;
 
     private void Awake()
     {
         currenthealth = startinghealth;
         anim = GetComponent<Animator>();
+        buttonrestart.onClick.AddListener(ReloadLevel);
     }
 
     public void Update()
@@ -23,8 +26,8 @@ public class HealthController : MonoBehaviour
 
         if (scenloaddelay < 0 && dead)
         {
-           
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ReloadLevel();
+            
         }
     }
 
@@ -41,7 +44,10 @@ public class HealthController : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+                GetComponent<PlayerController>().GameOver.gameObject.SetActive(true);
                 GetComponent<PlayerController>().enabled = false;
+                
+                
                 dead = true;
         
                 
@@ -49,7 +55,10 @@ public class HealthController : MonoBehaviour
         }
     }
 
-   
+   void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
 }

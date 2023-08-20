@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public bool IsPlayerGrounded;
     public GameObject playerposition;
     public ScoreController scoreController;
-   
+    public GameObject GameOver;
 
- 
+
+    private void Awake()
+    {
+        GameOver.SetActive(false);
+    }
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -94,8 +98,9 @@ public class PlayerController : MonoBehaviour
     {
         if(playerposition.transform.position.y<-36)
         {
-            Destroy(gameObject);
+            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
         }
     }
 
