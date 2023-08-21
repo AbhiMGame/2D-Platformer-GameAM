@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
      void PlayerDeath()
     {
-        if(playerposition.transform.position.y<-36)
+        if(playerposition.transform.position.y<-50)
         {
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

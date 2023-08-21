@@ -9,9 +9,11 @@ public class LobbyController : MonoBehaviour
     [SerializeField] private Button playgamebutton;
     [SerializeField] private Button quitgamebutton;
 
+    
 
     private void Awake()
     {
+
         playgamebutton.onClick.AddListener(Playgame);
         playgamebutton.onClick.AddListener(Quitgame);
     }

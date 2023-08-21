@@ -12,6 +12,7 @@ public class ScoreController : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
+       
     }
 
     public void IncreaseScore(int increment)
