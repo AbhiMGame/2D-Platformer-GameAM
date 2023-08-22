@@ -1790,7 +1790,6 @@ GameObject:
   - component: {fileID: 808272227}
   - component: {fileID: 808272229}
   - component: {fileID: 808272228}
-  - component: {fileID: 808272230}
   m_Layer: 0
   m_Name: Teleporter_06
   m_TagString: NextLevelTeleporter
@@ -1886,18 +1885,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &808272230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808272226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5aa88bbf407de4c8e62ca889073599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &815345983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,8 +2743,6 @@ MonoBehaviour:
   playerposition: {fileID: 1267547829}
   scoreController: {fileID: 1843850241}
   GameOver: {fileID: 604275941}
-  LevelFinished: {fileID: 1016008548}
-  nextlev: {fileID: 392660793}
 --- !u!114 &1267547831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2831,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1267547837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267547829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5aa88bbf407de4c8e62ca889073599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextLevelInto: {fileID: 1016008548}
+  Nextlevel: {fileID: 392660793}
+  buttonrestart: {fileID: 1791221034}
+  buttonquit: {fileID: 1245085283}
 --- !u!1 &1376943237
 GameObject:
   m_ObjectHideFlags: 0

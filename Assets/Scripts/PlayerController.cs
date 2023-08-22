@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
     public GameObject playerposition;
     public ScoreController scoreController;
     public GameObject GameOver;
+
     
-  
+
+
 
 
 
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         GameOver.SetActive(false);
         
+
     }
     void Update()
     {
@@ -93,12 +96,15 @@ public class PlayerController : MonoBehaviour
 
          if (collision.gameObject.CompareTag("NextLevelTeleporter"))
         {
-      
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            
+               
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            
        }
 
     }
 
+    
 
      void PlayerDeath()
     {

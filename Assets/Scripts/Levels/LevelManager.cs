@@ -59,20 +59,5 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt(level, (int)levelStatus);
         Debug.Log("Setting Level: " + level + "Status: " + levelStatus) ;
     }
-    public void LevelsReset()
-    {
-        for (int i = 0; i < Levels.Length; i++)
-        {
-            // Unlock the first level
-            if (i == 0)
-            {
-                SetLevelStatus(Levels[i], LevelStatus.Unlocked);
-            }
-            else
-            {
-                // Lock all other levels
-                SetLevelStatus(Levels[i], LevelStatus.Locked);
-            }
-        }
-    }
+    
 }

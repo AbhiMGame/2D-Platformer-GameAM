@@ -1174,7 +1174,7 @@ MonoBehaviour:
   - Scene2
   - Scene3
   - Scene4
-  - Scene5
+  - Scene4
 --- !u!1 &1433252704
 GameObject:
   m_ObjectHideFlags: 0
