@@ -10,7 +10,7 @@ namespace Assets.Scripts.Levels
     {
 
         private Button buttonname;
-        [SerializeField] private string Levelname;
+        public string Levelname;
 
         private void Awake()
         {
@@ -20,7 +20,22 @@ namespace Assets.Scripts.Levels
 
         private void onclick()
         {
-            SceneManager.LoadScene(Levelname);
+            LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(Levelname);
+            switch(levelStatus)
+            {
+                case LevelStatus.Locked:
+                    Debug.Log("Can't Play this as its locked");
+                    break;
+                case LevelStatus.Unlocked:
+                    SceneManager.LoadScene(Levelname);
+                    break;
+                case LevelStatus.Completed:
+                    SceneManager.LoadScene(Levelname); 
+                    break;
+            }
+            
         }
+
+       
     }
 }

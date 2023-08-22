@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class PlayerController : MonoBehaviour
     public GameObject playerposition;
     public ScoreController scoreController;
     public GameObject GameOver;
+    
+  
+
 
 
     private void Awake()
     {
         GameOver.SetActive(false);
+        
     }
     void Update()
     {
@@ -86,10 +91,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (collision.gameObject.CompareTag("NextLevelTeleporter"))
+         if (collision.gameObject.CompareTag("NextLevelTeleporter"))
         {
+      
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+       }
 
     }
 

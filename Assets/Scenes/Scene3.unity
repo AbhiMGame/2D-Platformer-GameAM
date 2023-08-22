@@ -1329,7 +1329,6 @@ GameObject:
   - component: {fileID: 1101575934}
   - component: {fileID: 1101575933}
   - component: {fileID: 1101575932}
-  - component: {fileID: 1101575931}
   m_Layer: 5
   m_Name: Levels
   m_TagString: Untagged
@@ -1357,19 +1356,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -287}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1101575931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101575929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a17d7c1676ac874f9e36116f595d265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Levelname: Levels
 --- !u!114 &1101575932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,6 +1659,7 @@ MonoBehaviour:
   startinghealth: 3
   buttonrestart: {fileID: 2121044983}
   buttonquit: {fileID: 222746015}
+  returntolevels: {fileID: 1101575932}
 --- !u!4 &1267547832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4468662929139969539, guid: 7b97d4d70c3b6824fa9a29679747899f,

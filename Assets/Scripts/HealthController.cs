@@ -13,6 +13,7 @@ public class HealthController : MonoBehaviour
     private float scenloaddelay=20f;
     [SerializeField]private Button buttonrestart;
     [SerializeField] private Button buttonquit;
+    [SerializeField] private Button returntolevels;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class HealthController : MonoBehaviour
         anim = GetComponent<Animator>();
         buttonrestart.onClick.AddListener(ReloadLevel);
         buttonquit.onClick.AddListener(Backtolobby);
+        returntolevels.onClick.AddListener(BacktoLevels);
     }
 
     public void Update()
@@ -67,4 +69,8 @@ public class HealthController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    void BacktoLevels()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
