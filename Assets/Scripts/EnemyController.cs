@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-           collision.GetComponent<HealthController>().takedamage(damage);
+           collision.GetComponent<HealthController>().TakeDamage(damage);
         }
     }
 

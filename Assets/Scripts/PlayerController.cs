@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
-    public float speed;
-    public float force;
-    public bool IsPlayerGrounded;
-    public GameObject playerposition;
-    public ScoreController scoreController;
-    public GameObject GameOver;
-
-    
-
-
-
-
+    [SerializeField]private Animator animator;
+    [SerializeField] private float speed;
+    [SerializeField] private float force;
+    [SerializeField] private bool isPlayerGrounded;
+    [SerializeField] private GameObject playerPosition;
+    [SerializeField] private ScoreController scoreController;
+    public GameObject gameOver;
 
     private void Awake()
     {
-        GameOver.SetActive(false);
+        gameOver.SetActive(false);
         
 
     }
@@ -34,7 +24,7 @@ public class PlayerController : MonoBehaviour
         PlayMovementAnimation(horizontal);
 
         float vertical = Input.GetAxisRaw("Vertical");
-        if (IsPlayerGrounded == true)
+        if (isPlayerGrounded == true)
         {
             JumpPlayer(vertical);
         }
@@ -55,7 +45,7 @@ public class PlayerController : MonoBehaviour
         transform.position = position;
     }
 
-    public void pickupkey()
+    public void PickupKey()
     {
         Debug.Log("Key has been picked up"); 
         scoreController.IncreaseScore(10);
@@ -86,29 +76,17 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("GROUND"))
         {
-            IsPlayerGrounded = true;
+            isPlayerGrounded = true;
         }
         else
         {
-            IsPlayerGrounded = false;
+            isPlayerGrounded = false;
         }
 
-
-         if (collision.gameObject.CompareTag("NextLevelTeleporter"))
-        {
-            
-               
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            
-       }
-
     }
-
-    
-
      void PlayerDeath()
     {
-        if(playerposition.transform.position.y<-50)
+        if(playerPosition.transform.position.y<-50)
         {
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

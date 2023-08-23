@@ -1,26 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelOverController : MonoBehaviour
 {
     public GameObject NextLevelInto;
-    [SerializeField] private Button Nextlevel;
-    [SerializeField] private Button buttonrestart;
-    [SerializeField] private Button buttonquit;
-    private bool doorcollision=false;
-
+    [SerializeField] private Button nextLevel;
+    [SerializeField] private Button buttonRestart;
+    [SerializeField] private Button buttonQuit;
     
-
 
     private void Awake()
     {
         NextLevelInto.SetActive(false);
-        buttonrestart.onClick.AddListener(ReloadLevel);
-        buttonquit.onClick.AddListener(BacktoLevels);
-        Nextlevel.onClick.AddListener(NextLevel);
+        buttonRestart.onClick.AddListener(ReloadLevel);
+        buttonQuit.onClick.AddListener(BacktoLevels);
+        nextLevel.onClick.AddListener(NextLevel);
     }
 
 
@@ -29,26 +24,21 @@ public class LevelOverController : MonoBehaviour
       
         if(collision.gameObject.CompareTag("NextLevelTeleporter"))
         {
-            
             NextLevelInto.SetActive(true);
-            doorcollision = true;
-            
-            
-
+   
         }
 
     }
     
-    void NextLevel()
+    private void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    void ReloadLevel()
+    private void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    void BacktoLevels()
+    private void BacktoLevels()
     {
         SceneManager.LoadScene(1);
     }

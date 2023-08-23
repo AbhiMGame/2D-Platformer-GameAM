@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
@@ -30,15 +28,12 @@ public class LevelManager : MonoBehaviour
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);
         }
     }
-    public void Markcurrentlevelcomplete()
+    public void MarkCrrentLevelComplete()
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
-        //set level status to complete
         SetLevelStatus(currentScene.name, LevelStatus.Completed);
-        
-
-        //Unlock next level and Load it
+       
         int currentSceneIndex = Array.FindIndex(Levels, level => level == currentScene.name);
         int nextSceneIndex = currentSceneIndex + 1;
         if (nextSceneIndex < Levels.Length)
@@ -60,4 +55,5 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Setting Level: " + level + "Status: " + levelStatus) ;
     }
     
+
 }

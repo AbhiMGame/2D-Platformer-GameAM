@@ -1,21 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LobbyController : MonoBehaviour
 {
-    [SerializeField] private Button playgamebutton;
-    [SerializeField] private Button quitgamebutton;
+    [SerializeField] private Button playgameButton;
+    [SerializeField] private Button quitgameButton;
 
     
 
     private void Awake()
     {
 
-        playgamebutton.onClick.AddListener(Playgame);
-        playgamebutton.onClick.AddListener(Quitgame);
+        playgameButton.onClick.AddListener(Playgame);
+        playgameButton.onClick.AddListener(Quitgame);
     }
 
     private void Playgame()

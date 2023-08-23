@@ -2304,10 +2304,10 @@ MonoBehaviour:
   animator: {fileID: 1267547835}
   speed: 7
   force: 10
-  IsPlayerGrounded: 1
-  playerposition: {fileID: 1267547829}
+  isPlayerGrounded: 0
+  playerPosition: {fileID: 1267547829}
   scoreController: {fileID: 2059231160}
-  GameOver: {fileID: 1683130081}
+  gameOver: {fileID: 1683130081}
 --- !u!114 &1267547831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2320,10 +2320,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bca8f745d183a47b780820aae5e5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startinghealth: 3
-  buttonrestart: {fileID: 2121044983}
-  buttonquit: {fileID: 222746015}
-  returntolevels: {fileID: 414447268}
+  startingHealth: 3
+  buttonRestart: {fileID: 2121044983}
+  buttonQuit: {fileID: 222746015}
+  returntoLevels: {fileID: 414447268}
 --- !u!4 &1267547832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4468662929139969539, guid: 7b97d4d70c3b6824fa9a29679747899f,
@@ -2409,9 +2409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextLevelInto: {fileID: 1109204998}
-  Nextlevel: {fileID: 212866599}
-  buttonrestart: {fileID: 988557570}
-  buttonquit: {fileID: 767061134}
+  nextLevel: {fileID: 212866599}
+  buttonRestart: {fileID: 988557570}
+  buttonQuit: {fileID: 767061134}
 --- !u!1 &1298932652
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,9 +2539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c81d641e37f2344acfcf508681ac24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerhealth: {fileID: 1267547831}
-  totalhealthbar: {fileID: 204831529}
-  currenthealthbar: {fileID: 1481182255}
+  playerHealth: {fileID: 1267547831}
+  totalHealthbar: {fileID: 204831529}
+  currentHealthbar: {fileID: 1481182255}
 --- !u!1001 &1447013739
 PrefabInstance:
   m_ObjectHideFlags: 0
