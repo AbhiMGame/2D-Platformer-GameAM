@@ -4,7 +4,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager instance;
+    private static LevelManager instance;
     public static LevelManager Instance { get { return instance; } }
     
     public string[] Levels;

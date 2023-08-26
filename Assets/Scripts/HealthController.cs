@@ -25,7 +25,7 @@ public class HealthController : MonoBehaviour
     public void Update()
     {
         scenloadDelay -= Time.deltaTime;
-
+        
         if (scenloadDelay < 0 && dead)
         {
             ReloadLevel();
@@ -35,18 +35,20 @@ public class HealthController : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-
-        if(currentHealth>0)
+        
+        if (currentHealth>0)
         {
             anim.SetTrigger("hurt");
+
         }
+       
         else
         {
             if (!dead)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerController>().gameOver.gameObject.SetActive(true);
-                GetComponent<PlayerController>().enabled = false;
+                GetComponent<PlayerController>().ShowGameOverPanel();
+               
                 dead = true;
             }
         }

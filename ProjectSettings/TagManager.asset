@@ -8,6 +8,7 @@ TagManager:
   - TilemapGround
   - NextLevelTeleporter
   - Enemy
+  - WorldEnd
   layers:
   - Default
   - TransparentFX

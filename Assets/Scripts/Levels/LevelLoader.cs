@@ -7,13 +7,13 @@ namespace Assets.Scripts.Levels
     [RequireComponent(typeof(Button))]
     public class LevelLoader : MonoBehaviour
     {
-        private Button buttonName;
+        private Button button;
         public string levelName;
 
         private void Awake()
         {
-            buttonName = GetComponent<Button>();
-            buttonName.onClick.AddListener(OnCclick);
+            button = GetComponent<Button>();
+            button.onClick.AddListener(OnCclick);
         }
 
         private void OnCclick()
@@ -25,9 +25,11 @@ namespace Assets.Scripts.Levels
                     Debug.Log("Can't Play this as its locked");
                     break;
                 case LevelStatus.Unlocked:
+                    SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
                     SceneManager.LoadScene(levelName);
                     break;
                 case LevelStatus.Completed:
+                    SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
                     SceneManager.LoadScene(levelName); 
                     break;
             }

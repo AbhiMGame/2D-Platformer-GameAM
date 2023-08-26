@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isPlayerGrounded;
     [SerializeField] private GameObject playerPosition;
     [SerializeField] private ScoreController scoreController;
+    [SerializeField] private GameObject worldLimiter;
     public GameObject gameOver;
+    
 
     private void Awake()
     {
@@ -28,7 +30,6 @@ public class PlayerController : MonoBehaviour
         {
             JumpPlayer(vertical);
         }
-        PlayerDeath();
     }
 
     private void MoveCharachtar(float horizontal)
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.y += vertical * force * Time.deltaTime;
         transform.position = position;
+       
     }
 
     public void PickupKey()
@@ -78,22 +80,20 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerGrounded = true;
         }
-        else
+        
+        if (collision.gameObject.CompareTag("WorldEnd"))
         {
-            isPlayerGrounded = false;
-        }
-
-    }
-     void PlayerDeath()
-    {
-        if(playerPosition.transform.position.y<-50)
-        {
-            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerDeath);
+
         }
+
     }
 
-    
+    public void ShowGameOverPanel()
+    {
+        gameOver.gameObject.SetActive(true);
+        this.enabled = false;
+    }
 
 }
