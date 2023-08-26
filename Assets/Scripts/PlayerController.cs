@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         MoveCharachtar(horizontal);
         PlayMovementAnimation(horizontal);
-
+        
         float vertical = Input.GetAxisRaw("Vertical");
         if (isPlayerGrounded == true)
         {
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
+        
     }
 
     private void JumpPlayer(float vertical)
@@ -61,13 +62,15 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0)
         {
             scale.x = -1f * Mathf.Abs(scale.x);
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerMove);
         }
         else if (horizontal > 0)
         {
             scale.x = Mathf.Abs(scale.x);
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerMove);
         }
         transform.localScale = scale;
-
+        
         bool crouch = Input.GetKey(KeyCode.LeftControl);
         animator.SetBool("Crouch", crouch);
 

@@ -47,6 +47,7 @@ public class HealthController : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+                SoundManager.Instance.Play(SoundManager.Sounds.PlayerDeath);
                 GetComponent<PlayerController>().ShowGameOverPanel();
                
                 dead = true;
@@ -57,15 +58,18 @@ public class HealthController : MonoBehaviour
     void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
     }
 
     void Backtolobby()
     {
         SceneManager.LoadScene(0);
+        SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
     }
 
     void BacktoLevels()
     {
         SceneManager.LoadScene(1);
+        SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
     }
 }
