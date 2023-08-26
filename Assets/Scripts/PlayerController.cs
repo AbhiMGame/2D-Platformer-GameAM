@@ -4,19 +4,21 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private Animator animator;
+    [SerializeField] public GameObject particleSys;
     [SerializeField] private float speed;
     [SerializeField] private float force;
     [SerializeField] private bool isPlayerGrounded;
     [SerializeField] private GameObject playerPosition;
     [SerializeField] private ScoreController scoreController;
     [SerializeField] private GameObject worldLimiter;
+    
     public GameObject gameOver;
     
 
     private void Awake()
     {
         gameOver.SetActive(false);
-        
+        particleSys.SetActive(false);
 
     }
     void Update()
@@ -93,10 +95,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Effects()
+    {
+        particleSys.SetActive(true);
+    }
+
     public void ShowGameOverPanel()
     {
+        
         gameOver.gameObject.SetActive(true);
         this.enabled = false;
+        SoundManager.Instance.Play(SoundManager.Sounds.GameOver);
     }
 
 }

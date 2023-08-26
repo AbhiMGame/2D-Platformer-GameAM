@@ -57,6 +57,8 @@ public class SoundManager : MonoBehaviour
         PlayerMove,
         PlayerDeath,
         EnemyDeath,
+        LevelFinish,
+        GameOver,
     }
 
 

@@ -25,7 +25,7 @@ public class LevelOverController : MonoBehaviour
         if(collision.gameObject.CompareTag("NextLevelTeleporter"))
         {
             NextLevelInto.SetActive(true);
-          
+            SoundManager.Instance.Play(SoundManager.Sounds.LevelFinish);
         }
 
     }

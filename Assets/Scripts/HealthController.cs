@@ -35,7 +35,7 @@ public class HealthController : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-        
+        PlayerController pH = GetComponent<PlayerController>();
         if (currentHealth>0)
         {
             anim.SetTrigger("hurt");
@@ -48,8 +48,8 @@ public class HealthController : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 SoundManager.Instance.Play(SoundManager.Sounds.PlayerDeath);
-                GetComponent<PlayerController>().ShowGameOverPanel();
-               
+                pH.ShowGameOverPanel();
+                pH.Effects();
                 dead = true;
             }
         }
