@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
-using System;
+
 
 public class ScoreController : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class ScoreController : MonoBehaviour
     private void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
-       
+
     }
 
     public void IncreaseScore(int increment)
@@ -20,7 +18,7 @@ public class ScoreController : MonoBehaviour
         score += increment;
         RefreshUI();
     }
-    private void start()
+    private void Start()
     {
         RefreshUI();
     }

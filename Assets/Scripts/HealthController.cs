@@ -1,63 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private float startinghealth=0.3f;
-    public float currenthealth { get; private set; }
+    [SerializeField] private float startingHealth=0.3f;
+    public float currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
-    private float scenloaddelay=20f;
-    [SerializeField]private Button buttonrestart;
-    [SerializeField] private Button buttonquit;
+    private float scenloadDelay=20f;
+    [SerializeField]private Button buttonRestart;
+    [SerializeField] private Button buttonQuit;
+    [SerializeField] private Button returntoLevels;
 
     private void Awake()
     {
-        currenthealth = startinghealth;
+        currentHealth = startingHealth;
         anim = GetComponent<Animator>();
-        buttonrestart.onClick.AddListener(ReloadLevel);
-        buttonquit.onClick.AddListener(Backtolobby);
+        buttonRestart.onClick.AddListener(ReloadLevel);
+        buttonQuit.onClick.AddListener(Backtolobby);
+        returntoLevels.onClick.AddListener(BacktoLevels);
     }
 
     public void Update()
     {
-        scenloaddelay -= Time.deltaTime;
-
-        if (scenloaddelay < 0 && dead)
+        scenloadDelay -= Time.deltaTime;
+        
+        if (scenloadDelay < 0 && dead)
         {
             ReloadLevel();
-            
         }
     }
 
-    public void takedamage(float _damage)
+    public void TakeDamage(float _damage)
     {
-        currenthealth = Mathf.Clamp(currenthealth - _damage, 0, startinghealth);
-
-        if(currenthealth>0)
+        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        
+        if (currentHealth>0)
         {
             anim.SetTrigger("hurt");
+
         }
+       
         else
         {
             if (!dead)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerController>().GameOver.gameObject.SetActive(true);
-                GetComponent<PlayerController>().enabled = false;
-                
-                
+                GetComponent<PlayerController>().ShowGameOverPanel();
+               
                 dead = true;
-        
-                
             }
         }
     }
 
-   void ReloadLevel()
+    void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -67,4 +64,8 @@ public class HealthController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    void BacktoLevels()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
