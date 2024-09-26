@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -8,19 +7,35 @@ namespace Assets.Scripts.Levels
     [RequireComponent(typeof(Button))]
     public class LevelLoader : MonoBehaviour
     {
-
-        private Button buttonname;
-        [SerializeField] private string Levelname;
+        private Button button;
+        public string levelName;
 
         private void Awake()
         {
-            buttonname = GetComponent<Button>();
-            buttonname.onClick.AddListener(onclick);
+            button = GetComponent<Button>();
+            button.onClick.AddListener(OnCclick);
         }
 
-        private void onclick()
+        private void OnCclick()
         {
-            SceneManager.LoadScene(Levelname);
+            LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(levelName);
+            switch(levelStatus)
+            {
+                case LevelStatus.Locked:
+                    Debug.Log("Can't Play this as its locked");
+                    break;
+                case LevelStatus.Unlocked:
+                    SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
+                    SceneManager.LoadScene(levelName);
+                    break;
+                case LevelStatus.Completed:
+                    SoundManager.Instance.Play(SoundManager.Sounds.ButtonClick);
+                    SceneManager.LoadScene(levelName); 
+                    break;
+            }
+            
         }
+
+       
     }
 }

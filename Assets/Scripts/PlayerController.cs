@@ -1,36 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
-    public float speed;
-    public float force;
-    public bool IsPlayerGrounded;
-    public GameObject playerposition;
-    public ScoreController scoreController;
-    public GameObject GameOver;
-
+    [SerializeField]private Animator animator;
+    [SerializeField] public GameObject particleSys;
+    [SerializeField] private float speed;
+    [SerializeField] private float force;
+    [SerializeField] private bool isPlayerGrounded;
+    [SerializeField] private GameObject playerPosition;
+    [SerializeField] private ScoreController scoreController;
+    [SerializeField] private GameObject worldLimiter;
+    
+    public GameObject gameOver;
+    
 
     private void Awake()
     {
-        GameOver.SetActive(false);
+        gameOver.SetActive(false);
+        particleSys.SetActive(false);
+
     }
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         MoveCharachtar(horizontal);
         PlayMovementAnimation(horizontal);
-
+        
         float vertical = Input.GetAxisRaw("Vertical");
-        if (IsPlayerGrounded == true)
+        if (isPlayerGrounded == true)
         {
             JumpPlayer(vertical);
         }
-        PlayerDeath();
     }
 
     private void MoveCharachtar(float horizontal)
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.x += horizontal * speed * Time.deltaTime;
         transform.position = position;
+        
     }
 
     private void JumpPlayer(float vertical)
@@ -45,9 +47,10 @@ public class PlayerController : MonoBehaviour
         Vector3 position = transform.position;
         position.y += vertical * force * Time.deltaTime;
         transform.position = position;
+       
     }
 
-    public void pickupkey()
+    public void PickupKey()
     {
         Debug.Log("Key has been picked up"); 
         scoreController.IncreaseScore(10);
@@ -61,13 +64,15 @@ public class PlayerController : MonoBehaviour
         if (horizontal < 0)
         {
             scale.x = -1f * Mathf.Abs(scale.x);
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerMove);
         }
         else if (horizontal > 0)
         {
             scale.x = Mathf.Abs(scale.x);
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerMove);
         }
         transform.localScale = scale;
-
+        
         bool crouch = Input.GetKey(KeyCode.LeftControl);
         animator.SetBool("Crouch", crouch);
 
@@ -78,32 +83,29 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("GROUND"))
         {
-            IsPlayerGrounded = true;
+            isPlayerGrounded = true;
         }
-        else
+        
+        if (collision.gameObject.CompareTag("WorldEnd"))
         {
-            IsPlayerGrounded = false;
-        }
-
-
-        if (collision.gameObject.CompareTag("NextLevelTeleporter"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-
-    }
-
-
-     void PlayerDeath()
-    {
-        if(playerposition.transform.position.y<-50)
-        {
-            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            
+            SoundManager.Instance.Play(SoundManager.Sounds.PlayerDeath);
+
         }
+
     }
 
-    
+    public void Effects()
+    {
+        particleSys.SetActive(true);
+    }
+
+    public void ShowGameOverPanel()
+    {
+        
+        gameOver.gameObject.SetActive(true);
+        this.enabled = false;
+        SoundManager.Instance.Play(SoundManager.Sounds.GameOver);
+    }
 
 }
